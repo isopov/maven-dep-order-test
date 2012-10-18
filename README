@@ -1,0 +1,3 @@
+ This is the illustration to the transitive dependencies versions depend on order of the dependencies in pom.xml. To observer this behaviour just do mvn clean package and look at spring-core-3.0.7 in one war package and spring-core-3.1.2 in the other one, while these war project differ only in the order of depending on the dep1 and dep2.
+
+ This seems to be very unintuitive and I recommend to use maven-enforcer-plugin with DependencyConvergence rule for all your projects (this will not solve the problem  but will highlight it failing the build - the actual solution will be to use dependency management or dependency exclusion). Its rule bannedDependencies is very useful too, e.g. to prevent logging systems other than that you are using getting their way into your project.
